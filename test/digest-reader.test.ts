@@ -11,8 +11,10 @@ describe('readNight', () => {
     expect(night.badLines).toBe(1);
     expect(night.counts).toEqual({ ok: 10, retry: 4, fail: 1 });
     const job = (name: string) => night.rows.find((r) => r.job === name)!;
-    expect(job('fixtures/refresh')).toMatchObject({ runs: 4, retries: 3, lastStatus: 'ok', lastError: null, firstAt: '2026-10-29T01:30:00+01:00', lastAt: '2026-10-29T01:37:00+01:00' });
+    expect(job('fixtures/refresh')).toMatchObject({ runs: 4, retries: 3, lastStatus: 'ok', lastError: 'upstream 503', firstAt: '2026-10-29T01:30:00+01:00', lastAt: '2026-10-29T01:37:00+01:00' });
+    expect(job('lane/sync').lastError).toBe('lock held');
     expect(job('notes/backup')).toMatchObject({ lastStatus: 'fail', lastError: 'quota exceeded' });
+    expect(job('rig/rotate-logs').lastError).toBeNull();
     expect(job('digest/render').owner).toBeNull();
   });
 

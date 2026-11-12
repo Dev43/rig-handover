@@ -52,7 +52,7 @@ export const readNight: ReadNight = (runsDir, night) => {
     r.lastAt = line.at;
     r.owner = line.owner;
     r.lastStatus = line.status;
-    r.lastError = line.error;
+    if (line.error) r.lastError = line.error; // most recent error, kept past a later ok
   }
   result.rows = [...byJob.values()].sort((a, b) => (a.job < b.job ? -1 : a.job > b.job ? 1 : 0));
   return result;

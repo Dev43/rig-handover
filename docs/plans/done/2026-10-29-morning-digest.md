@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-11-12
 ---
 
 # Morning digest
@@ -77,3 +78,19 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Worker | Closed |
+|---|-------|-----------|--------|--------|
+| 1 | Digest types | — | claude-code · opus-5.5 · medium | 2026-11-12 |
+| 2 | Run log reader | #1 | claude-code · opus-5.5 · medium | 2026-11-12 |
+| 3 | Digest page | #1 | claude-code · sonnet-5.5 · low | 2026-11-12 |
+| 4 | Digest JSON | #1 | claude-code · sonnet-5.5 · low | 2026-11-12 |
+| 5 | Board link | #1 | claude-code · sonnet-5.5 · low | 2026-11-12 |
+| 6 | Route tests | #1 | claude-code · sonnet-5.5 · low | 2026-11-12 |
+| 7 | Preview for review | #3 | claude-code · fable-5.2 · medium | 2026-11-12 |
+| 8 | Clean up | #7 | claude-code · fable-5.2 · medium (upload), claude-code · sonnet-5.5 · low (plan move) | 2026-11-12 |
+| 15 | Reader: last error is the job's most recent error | #2 | claude-code · opus-5.5 · medium | 2026-11-12 |
+
+#15 came from review of #2, not from the plan. #7 was closed when the link was sent and reopened: the reviewer had not looked yet. Numbers 9 to 14 are the workers' pull requests. The preview lost its lane marker on 2026-11-12 (ADR 0003).
